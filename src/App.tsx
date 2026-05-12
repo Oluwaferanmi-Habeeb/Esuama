@@ -1,13 +1,34 @@
-import { motion, AnimatePresence, useScroll } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "motion/react";
 import { Heart, Stars, Sparkle, ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SparklingStars from "./components/SparklingStars";
 import RomanticLetter from "./components/RomanticLetter";
 import MemoryTimeline from "./components/MemoryTimeline";
 import PhotoGallery from "./components/PhotoGallery";
 import TwentyReasons from "./components/TwentyReasons";
 import VideoMemorial from "./components/VideoMemorial";
-import CosmicForecast from "./components/CosmicForecast";
+
+function MouseFollower() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const springConfig = { damping: 25, stiffness: 150 };
+  const x = useSpring(mousePos.x, springConfig);
+  const y = useSpring(mousePos.y, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  return (
+    <motion.div
+      style={{ x, y }}
+      className="fixed top-0 left-0 w-8 h-8 rounded-full bg-violet-500/20 blur-xl pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 hidden md:block"
+    />
+  );
+}
 
 function IntroOverlay({ onStart }: { onStart: () => void }) {
   return (
@@ -16,7 +37,6 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
       exit={{ opacity: 0, transition: { duration: 2, ease: "easeInOut" } }}
       className="fixed inset-0 z-[1000] bg-cosmic-bg flex items-center justify-center overflow-hidden"
     >
-      {/* Background Ambience */}
       <div className="absolute inset-0 opacity-40">
         <div className="absolute top-[20%] left-[10%] w-[40vw] h-[40vw] bg-violet-600/20 blur-[150px] rounded-full animate-pulse" />
         <div className="absolute bottom-[20%] right-[10%] w-[30vw] h-[30vw] bg-indigo-600/20 blur-[130px] rounded-full animate-pulse" />
@@ -49,7 +69,7 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
         </motion.button>
       </div>
       
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="noise-overlay" />
     </motion.div>
   );
 }
@@ -57,6 +77,7 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
 export default function App() {
   const [started, setStarted] = useState(false);
   const { scrollYProgress } = useScroll();
+  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
 
   const handleStart = () => {
     setStarted(true);
@@ -70,7 +91,10 @@ export default function App() {
 
   return (
     <main className="relative min-h-screen bg-cosmic-bg selection:bg-violet-500/30 selection:text-white">
-      {/* Background Audio - Triggers on user interaction */}
+      <div className="noise-overlay" />
+      <MouseFollower />
+      
+      {/* Background Audio */}
       {started && (
         <iframe 
           width="0" 
@@ -97,9 +121,7 @@ export default function App() {
           {/* Hero Section */}
           <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
             <motion.div 
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ duration: 3 }}
+               style={{ y: heroY }}
                className="absolute inset-0 z-0"
             >
               <div className="absolute inset-0 bg-gradient-to-b from-cosmic-bg via-transparent to-cosmic-bg z-10" />
@@ -115,7 +137,7 @@ export default function App() {
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
                 className="flex items-center justify-center gap-3 mb-10"
               >
                 <Sparkle className="text-violet-400 animate-spin-slow" size={16} />
@@ -126,7 +148,7 @@ export default function App() {
               <motion.h1 
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.3, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.8, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                 className="text-6xl sm:text-8xl md:text-[14rem] font-serif text-white tracking-tighter leading-[0.8] mb-12 drop-shadow-[0_0_50px_rgba(139,92,246,0.3)]"
               >
                 <span className="block italic font-extralight text-2xl sm:text-3xl md:text-5xl text-violet-400/60 mb-6 sm:mb-8 tracking-normal">Twenty Years of</span>
@@ -144,7 +166,7 @@ export default function App() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2.5, duration: 2 }}
+                transition={{ delay: 2, duration: 2 }}
                 className="flex flex-col items-center gap-6"
               >
                 <p className="text-violet-200/60 max-w-xl italic text-xl md:text-3xl leading-relaxed font-light">
@@ -201,9 +223,6 @@ export default function App() {
           {/* Global Ambient Glows */}
           <div className="fixed top-[20%] left-[10%] w-[70vw] h-[70vw] bg-violet-600/5 blur-[200px] rounded-full pointer-events-none -z-0 mix-blend-screen" />
           <div className="fixed bottom-[10%] right-[30%] w-[50vw] h-[50vw] bg-indigo-600/5 blur-[180px] rounded-full pointer-events-none -z-0 mix-blend-screen" />
-          
-          {/* Film Grain Texture Layer */}
-          <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.04] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
         </>
       )}
     </main>

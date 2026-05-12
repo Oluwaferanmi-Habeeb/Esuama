@@ -25,6 +25,21 @@
     font-family: var(--font-serif);
     @apply tracking-tight;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-cosmic-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.5);
+  }
 }
 
 .glass-dark {
@@ -41,46 +56,45 @@
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  background: linear-gradient(135deg, #a855f7 10%, #ec4899 50%, #6366f1 90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.cosmic-glow {
-  box-shadow: 0 0 50px rgba(168, 85, 247, 0.2);
+@keyframes noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.noise-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://grainy-gradients.vercel.app/noise.svg') repeat;
+  background-size: 150px 150px;
+  animation: noise 8s steps(10) infinite;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 9999;
 }
 
 @keyframes slow-pan {
-  from { background-position: 0% 0%; }
-  to { background-position: 100% 100%; }
+  from { transform: scale(1) translate(0, 0); }
+  to { transform: scale(1.1) translate(-2%, -2%); }
 }
 
 .animate-slow-pan {
-  animation: slow-pan 60s linear infinite alternate;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.shimmer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    transparent 100%
-  );
-  animation: shimmer 3s infinite;
+  animation: slow-pan 20s ease-in-out infinite alternate;
 }
