@@ -25,8 +25,8 @@ export default function PhotoGallery() {
                <span className="text-violet-400 font-mono text-[10px] uppercase tracking-[0.6em]">Scrapbook No. 01</span>
             </div>
             <h2 className="text-5xl sm:text-7xl md:text-[10rem] font-serif font-light text-white leading-[0.85] tracking-tighter">
-              Archive of <br />
-              <span className="italic text-violet-400 font-extralight">Captive Light.</span>
+              Beautiful <br />
+              <span className="italic text-violet-400 font-extralight">Moments.</span>
             </h2>
           </motion.div>
           
@@ -38,7 +38,7 @@ export default function PhotoGallery() {
             className="md:text-right"
           >
             <p className="text-violet-300/60 text-lg font-light leading-relaxed max-w-xs mb-6">
-              Every curated frame is a testament to the magic we've shared.
+              Every picture here tells a piece of our story, and they are all my favorite.
             </p>
             <div className="flex md:justify-end gap-2 text-violet-500">
                <Sparkles size={20} />
@@ -57,7 +57,7 @@ export default function PhotoGallery() {
           >
             <div className="absolute -top-6 -left-6 sm:-top-12 sm:-left-12 text-white/5 font-serif text-8xl sm:text-[15rem] pointer-events-none select-none">01</div>
             <div className="relative aspect-[3/4] md:aspect-auto md:h-full overflow-hidden rounded-sm bg-violet-900/10">
-              <img src={photos[0].url} className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" alt="Gallery" />
+              <img src={photos[0].url} className="w-full h-full object-cover object-top grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-105" alt="Gallery" />
               <div className="absolute inset-0 bg-gradient-to-t from-cosmic-bg/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="absolute bottom-8 left-8 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
                 <p className="text-white font-serif text-2xl italic">{photos[0].caption}</p>
@@ -75,9 +75,9 @@ export default function PhotoGallery() {
             className="md:col-span-7 relative group"
           >
              <div className="relative aspect-video overflow-hidden rounded-sm bg-violet-900/10">
-              <img src={photos[1].url} className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 group-hover:rotate-1" alt="Gallery" />
+              <img src={photos[1].url} className="w-full h-full object-cover object-[center_20%] grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 group-hover:rotate-1" alt="Gallery" />
               <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
-                 <p className="text-white font-serif text-xl italic">{photos[1].caption}</p>
+                 <p className="text-white font-serif text-xl italic drop-shadow-md">{photos[1].caption}</p>
               </div>
             </div>
           </motion.div>
@@ -91,7 +91,7 @@ export default function PhotoGallery() {
             className="md:col-span-3 relative group self-center"
           >
              <div className="relative aspect-square overflow-hidden rounded-full border border-white/10 p-4 bg-white/5 backdrop-blur-sm">
-                <img src={photos[2].url} className="w-full h-full object-cover rounded-full" alt="Gallery" />
+                <img src={photos[2].url} className="w-full h-full object-cover object-top rounded-full" alt="Gallery" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-cosmic-bg/60 rounded-full">
                   <span className="text-[10px] text-white uppercase tracking-widest">Enlarge</span>
                 </div>
@@ -108,7 +108,7 @@ export default function PhotoGallery() {
             className="md:col-span-4 relative group"
           >
              <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-violet-900/10 transform md:rotate-2 group-hover:rotate-0 transition-transform duration-700">
-               <img src={photos[3].url} className="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000" alt="Gallery" />
+               <img src={photos[3].url} className="w-full h-full object-cover object-center grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000" alt="Gallery" />
                <div className="absolute top-6 right-6 h-12 w-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
                   <Camera size={16} />
                </div>

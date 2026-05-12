@@ -7,7 +7,7 @@ const videoMoments = [
     id: 1,
     title: "Our First Magical Night",
     src: "/memories/vid_magic_night.mp4",
-    caption: "The night when the world fell away and it was just us, under the cosmic glow."
+    caption: "The night when the world fell away and it was just us."
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const videoMoments = [
   },
   {
     id: 3,
-    title: "Celestial Dance",
+    title: "Beautiful Days",
     src: "/memories/vid3.mp4",
     caption: "Every second with you is a memory I'll cherish forever."
   },
@@ -25,13 +25,13 @@ const videoMoments = [
     id: 4,
     title: "Magic in the Air",
     src: "/memories/vid4.mp4",
-    caption: "Our story is my favorite fairy tale."
+    caption: "Our story is my absolute favorite."
   },
   {
     id: 5,
     title: "Forever Us",
     src: "/memories/vid5.mp4",
-    caption: "To many more years of magic, pure Esuama."
+    caption: "To many more years of magic."
   }
 ];
 
@@ -67,9 +67,9 @@ export default function VideoMemorial() {
               className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-violet-500/20 bg-violet-500/5 backdrop-blur-sm mb-8 md:mb-12"
             >
               <Film size={14} className="text-violet-400" />
-              <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-violet-300">Cinematic Archives</span>
+              <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-violet-300">Video Memories</span>
             </motion.div>
-            <h2 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white italic tracking-tight leading-none">The Director's Cut <br /> of <span className="text-violet-400 font-extralight italic">Us.</span></h2>
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white italic tracking-tight leading-none">Our Favorite <br /> <span className="text-violet-400 font-extralight italic">Moments.</span></h2>
         </div>
 
         <div className="space-y-32 md:space-y-64">
@@ -82,13 +82,13 @@ export default function VideoMemorial() {
                 className={`md:col-span-8 ${index % 2 !== 0 ? 'md:order-last' : ''}`}
               >
                 <div 
-                  className="relative group cursor-pointer overflow-hidden rounded-sm bg-slate-900 aspect-video shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
+                  className="relative group cursor-pointer overflow-hidden rounded-[2rem] bg-slate-900/50 aspect-[4/5] md:aspect-video shadow-[0_40px_100px_rgba(0,0,0,0.6)] border border-white/5"
                   onClick={() => togglePlay(moment.id)}
                 >
                   <video 
                     ref={el => videoRefs.current[moment.id] = el}
                     src={moment.src} 
-                    className={`w-full h-full object-contain md:object-cover transition-all duration-1000 ${playingId === moment.id ? 'grayscale-0 scale-100' : 'grayscale-[60%] opacity-40 scale-105'}`}
+                    className={`w-full h-full object-contain transition-all duration-1000 ${playingId === moment.id ? 'grayscale-0 scale-100' : 'grayscale-[60%] opacity-40 scale-105'}`}
                     loop
                     muted={playingId !== moment.id}
                     playsInline
@@ -107,7 +107,7 @@ export default function VideoMemorial() {
 
                   <div className="absolute top-8 left-8 flex items-center gap-4">
                      <span className="h-px w-8 bg-violet-500/50" />
-                     <span className="text-white/40 font-mono text-[9px] uppercase tracking-[0.4em]">Section 0{index + 1}</span>
+                     <span className="text-white/80 font-mono text-[9px] uppercase tracking-[0.4em]">Memory 0{index + 1}</span>
                   </div>
 
                   {/* Film Grain Texture layer for that movie feel */}
@@ -123,7 +123,7 @@ export default function VideoMemorial() {
                 className={`md:col-span-4 ${index % 2 !== 0 ? 'text-right md:pr-12' : 'md:pl-12'}`}
               >
                   <h3 className="text-2xl sm:text-3xl md:text-5xl font-serif text-white mb-6 md:mb-8 italic">{moment.title}</h3>
-                  <p className="text-violet-200/50 font-light text-base sm:text-lg italic leading-relaxed mb-6 md:mb-8">
+                  <p className="text-violet-200/60 font-light text-base sm:text-lg italic leading-relaxed mb-6 md:mb-8">
                     "{moment.caption}"
                   </p>
                   <motion.div 

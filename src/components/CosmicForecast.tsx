@@ -1,20 +1,20 @@
 import { motion } from "motion/react";
-import { Sparkles, Moon, Sun, Stars } from "lucide-react";
+import { Sparkles, Heart, Star, Sun } from "lucide-react";
 
 const forecastItems = [
   {
-    title: "The Year of Expansion",
-    description: "At twenty, your horizon isn't just distant—it's infinite. This year, the stars align for bold movements, career breakthroughs, and artistic evolution.",
+    title: "Endless Happiness",
+    description: "At twenty, your whole life is ahead of you. I hope this year brings you so much joy, bold new adventures, and everything you've ever dreamed of.",
     icon: Sun,
   },
   {
-    title: "Emotional Gravity",
-    description: "Expect a deepening of the bonds that matter. Your orbit is pulling in the right energy, grounding you in wisdom and quiet power.",
-    icon: Moon,
+    title: "Deeper Connection",
+    description: "I look forward to growing even closer to you. I want to continue being your safe space and your biggest supporter through it all.",
+    icon: Heart,
   },
   {
-    title: "Creative Supernova",
-    description: "Your voice is becoming a frequency that others can't help but tune into. Pure Esuama energy will be at an all-time high.",
+    title: "Shining Bright",
+    description: "You have a light that makes everyone around you better. Keep shining, keep being yourself, because you are absolutely perfect.",
     icon: Sparkles,
   }
 ];
@@ -30,18 +30,18 @@ export default function CosmicForecast() {
               viewport={{ once: true }}
               className="flex items-center justify-center gap-4 mb-8"
             >
-               <Stars size={20} className="text-violet-500" />
-               <span className="text-violet-400 font-mono text-[10px] uppercase tracking-[0.8em]">Sidereal Reading</span>
-               <Stars size={20} className="text-violet-500" />
+               <Star size={16} className="text-violet-500 fill-violet-500" />
+               <span className="text-violet-400 font-mono text-[10px] uppercase tracking-[0.8em]">Looking Forward</span>
+               <Star size={16} className="text-violet-500 fill-violet-500" />
             </motion.div>
-            <h2 className="text-5xl md:text-9xl font-serif text-white tracking-tighter italic">The Stellar <br /> <span className="text-violet-400 font-extralight">Forecast.</span></h2>
+            <h2 className="text-5xl md:text-9xl font-serif text-white tracking-tighter italic">My Wishes <br /> <span className="text-violet-400 font-extralight">For You.</span></h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {forecastItems.map((item, index) => {
             const Icon = item.icon;
             return (
-              <motion.div
+               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export default function CosmicForecast() {
                 </div>
                 
                 <h3 className="text-2xl font-serif text-white mb-6 italic">{item.title}</h3>
-                <p className="text-violet-200/40 font-light leading-relaxed">
+                <p className="text-violet-200/60 font-light leading-relaxed">
                   {item.description}
                 </p>
                 
@@ -72,7 +72,7 @@ export default function CosmicForecast() {
           viewport={{ once: true }}
           className="mt-24 md:mt-40 text-center"
         >
-          <p className="text-violet-300/20 font-serif text-2xl italic">"The constellations are simply waiting for you to lead."</p>
+          <p className="text-violet-300/40 font-serif text-2xl italic">"I can't wait to see what this year holds for you."</p>
         </motion.div>
       </div>
     </section>

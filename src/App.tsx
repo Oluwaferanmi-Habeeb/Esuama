@@ -33,7 +33,7 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
         >
           <span className="text-violet-400 font-sans text-xs uppercase tracking-[0.8em] mb-4 block">Inviting You To</span>
           <h1 className="text-6xl md:text-8xl font-serif text-white italic tracking-tighter leading-none">
-            Esuama's <br /> <span className="text-violet-200">Cosmology.</span>
+            Celebrate <br /> <span className="text-violet-200">Esuama.</span>
           </h1>
           <p className="mt-8 text-violet-500/60 font-mono text-[10px] uppercase tracking-[0.5em]">#anAccraLagoslovestory</p>
         </motion.div>
@@ -46,7 +46,7 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
         >
           <div className="absolute inset-0 bg-violet-500/20 group-hover:bg-violet-500/40 transition-colors backdrop-blur-md border border-white/10" />
           <span className="relative text-white font-sans text-sm uppercase tracking-[0.3em] font-bold flex items-center gap-4">
-            Enter Your Universe <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            Open Your Gift <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </span>
         </motion.button>
 
@@ -180,12 +180,12 @@ export default function App() {
                    <Stars className="text-white animate-spin-slow" size={48} />
                    <Heart className="text-violet-500 fill-violet-500/20 animate-pulse" size={48} />
                 </div>
-                <p className="font-serif text-4xl sm:text-6xl md:text-8xl text-white italic leading-tight">Beyond the moons <br /> & the stars, yamski.</p>
+                <p className="font-serif text-4xl sm:text-6xl md:text-8xl text-white italic leading-tight">I love you so much <br /> yamski.</p>
                 <div className="flex flex-col gap-6">
                   <p className="text-violet-500 font-mono text-sm uppercase tracking-[0.5em] font-black">#anAccraLagoslovestory</p>
                   <div className="flex flex-col gap-4">
                     <p className="text-violet-400 font-sans text-xs uppercase tracking-[0.8em] font-black">Forever Yours</p>
-                    <p className="text-white/5 font-mono text-[10px] uppercase tracking-[0.3em]">Design No. 0512-2026 · Pure Esuama Collection</p>
+                    <p className="text-white/5 font-mono text-[10px] uppercase tracking-[0.3em]">Pure Esuama Collection</p>
                   </div>
                 </div>
               </motion.div>
