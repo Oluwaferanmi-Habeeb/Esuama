@@ -3,11 +3,6 @@ import { Sparkles, Heart, Star, Sun } from "lucide-react";
 
 const forecastItems = [
   {
-    title: "Endless Happiness",
-    description: "At twenty, your whole life is ahead of you. I hope this year brings you so much joy, bold new adventures, and everything you've ever dreamed of.",
-    icon: Sun,
-  },
-  {
     title: "Deeper Connection",
     description: "I look forward to growing even closer to you. I want to continue being your safe space and your biggest supporter through it all.",
     icon: Heart,
