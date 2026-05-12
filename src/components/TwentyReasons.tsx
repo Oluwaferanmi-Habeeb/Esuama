@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { Sparkles, Heart } from "lucide-react";
 
 const reasons = [
   "You’re beautiful and smart as hell, your face alone can brighten any room.",
@@ -27,49 +26,49 @@ const reasons = [
 export default function TwentyReasons() {
   return (
     <section className="py-40 relative z-10 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
            initial={{ opacity: 0, y: 30 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           className="mb-32 text-left"
+           className="mb-24 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-12"
         >
-          <div className="h-px w-24 bg-violet-500 mb-12" />
-          <h2 className="text-5xl sm:text-7xl md:text-8xl font-serif font-light text-white mb-8">
-            Things I Like <br />
-            <span className="italic text-violet-400">About Her.</span>
-          </h2>
-          <p className="text-violet-300/60 text-lg uppercase tracking-[0.3em]">A personal exhaustive list for my yamski</p>
+          <div>
+            <div className="h-px w-24 bg-violet-500 mb-12 mx-auto md:mx-0" />
+            <h2 className="text-5xl sm:text-7xl md:text-8xl font-serif font-light text-white leading-none">
+              Things I Love <br />
+              <span className="italic text-violet-400 font-medium">About You.</span>
+            </h2>
+          </div>
+          <p className="text-violet-300/60 text-sm md:text-right uppercase tracking-[0.3em] max-w-[200px] mx-auto md:mx-0 leading-loose">
+            A personal exhaustive list for my yamski
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-16 md:gap-y-32">
+        <div className="flex flex-col">
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -10 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className={`relative group p-8 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors ${index % 2 !== 0 ? 'md:translate-y-24' : ''}`}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative border-t border-white/5 py-8 md:py-12 transition-all duration-500 hover:bg-white/[0.02]"
             >
-              <div className="flex flex-col gap-6">
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl sm:text-5xl font-serif font-black text-violet-500/20 group-hover:text-violet-500/40 transition-colors uppercase italic select-none">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <Heart size={14} className="text-violet-500/0 group-hover:text-violet-500/60 transition-all transform group-hover:scale-125" />
-                </div>
-                <p className="text-lg sm:text-xl md:text-2xl font-serif text-white/80 group-hover:text-white leading-relaxed italic transition-colors">
-                  "{reason}"
+              <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12 px-6">
+                <span className="text-5xl md:text-7xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-b from-violet-500/80 to-transparent italic w-24 flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <p className="text-2xl md:text-4xl font-serif text-white/50 group-hover:text-white leading-tight transition-colors duration-500 max-w-3xl">
+                  {reason}
                 </p>
-                <div className="w-12 h-[1px] bg-violet-500/30 group-hover:w-full transition-all duration-700" />
               </div>
               
-              {/* Subtle accent glow */}
-              <div className="absolute inset-0 bg-violet-500/5 opacity-0 group-hover:opacity-100 blur-2xl rounded-2xl transition-opacity pointer-events-none" />
+              {/* Hover sweep line */}
+              <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-violet-500/50 group-hover:w-full transition-all duration-1000 ease-in-out" />
             </motion.div>
           ))}
+          <div className="border-t border-white/5 w-full" />
         </div>
       </div>
     </section>

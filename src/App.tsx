@@ -1,15 +1,13 @@
 import { motion, AnimatePresence, useScroll } from "motion/react";
 import { Heart, Stars, Sparkle, ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SparklingStars from "./components/SparklingStars";
 import RomanticLetter from "./components/RomanticLetter";
 import MemoryTimeline from "./components/MemoryTimeline";
-import MusicPlayer from "./components/MusicPlayer";
 import PhotoGallery from "./components/PhotoGallery";
 import TwentyReasons from "./components/TwentyReasons";
 import VideoMemorial from "./components/VideoMemorial";
 import CosmicForecast from "./components/CosmicForecast";
-import CustomCursor from "./components/CustomCursor";
 
 function IntroOverlay({ onStart }: { onStart: () => void }) {
   return (
@@ -49,10 +47,6 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
             Open Your Gift <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </span>
         </motion.button>
-
-        <p className="absolute bottom-12 text-white/20 font-mono text-[9px] uppercase tracking-[0.5em]">
-          Best experienced with sound
-        </p>
       </div>
       
       <div className="absolute inset-0 pointer-events-none opacity-[0.05] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -63,6 +57,15 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
 export default function App() {
   const [started, setStarted] = useState(false);
   const { scrollYProgress } = useScroll();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleStart = () => {
+    setStarted(true);
+    if (audioRef.current) {
+      audioRef.current.volume = 0.4;
+      audioRef.current.play().catch(e => console.log("Audio playback failed:", e));
+    }
+  };
 
   useEffect(() => {
     if (started) {
@@ -72,19 +75,24 @@ export default function App() {
 
   return (
     <main className="relative min-h-screen bg-cosmic-bg selection:bg-violet-500/30 selection:text-white">
+      {/* Background Audio - Will play automatically after user interaction (clicking the enter button) */}
+      <audio 
+        ref={audioRef} 
+        src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" 
+        loop 
+        preload="auto"
+      />
+
       <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-violet-500 origin-left z-[2000]"
         style={{ scaleX: scrollYProgress }}
       />
       <AnimatePresence>
-        {!started && <IntroOverlay onStart={() => setStarted(true)} />}
+        {!started && <IntroOverlay onStart={handleStart} />}
       </AnimatePresence>
-      
-      <CustomCursor />
 
       {started && (
         <>
-          <MusicPlayer />
           <SparklingStars />
           
           {/* Hero Section */}
