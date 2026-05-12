@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Calendar, Star, Heart, Camera } from "lucide-react";
+import { Calendar, Star, Heart } from "lucide-react";
 
 const milestones = [
   {
@@ -13,12 +13,6 @@ const milestones = [
     description: "The stars aligned perfectly that night, and since then, I've known you were my true north.",
     icon: Heart,
     color: "bg-pink-500/20 text-pink-400",
-  },
-  {
-    title: "Endless Adventures",
-    description: "From trips to the park to late-night drives, every second counts.",
-    icon: Camera,
-    color: "bg-indigo-500/20 text-indigo-400",
   },
   {
     title: "The Best is Yet to Come",

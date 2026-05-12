@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, useScroll } from "motion/react";
 import { Heart, Stars, Sparkle, ArrowRight } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import SparklingStars from "./components/SparklingStars";
 import RomanticLetter from "./components/RomanticLetter";
 import MemoryTimeline from "./components/MemoryTimeline";
@@ -57,14 +57,9 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
 export default function App() {
   const [started, setStarted] = useState(false);
   const { scrollYProgress } = useScroll();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleStart = () => {
     setStarted(true);
-    if (audioRef.current) {
-      audioRef.current.volume = 0.4;
-      audioRef.current.play().catch(e => console.log("Audio playback failed:", e));
-    }
   };
 
   useEffect(() => {
@@ -76,12 +71,17 @@ export default function App() {
   return (
     <main className="relative min-h-screen bg-cosmic-bg selection:bg-violet-500/30 selection:text-white">
       {/* Background Audio - Will play automatically after user interaction (clicking the enter button) */}
-      <audio 
-        ref={audioRef} 
-        src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" 
-        loop 
-        preload="auto"
-      />
+      {started && (
+        <iframe 
+          width="0" 
+          height="0" 
+          src="https://www.youtube.com/embed/gs9Ard7ql6s?autoplay=1&loop=1&playlist=gs9Ard7ql6s" 
+          title="Asake My Heart" 
+          frameBorder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          className="fixed top-0 left-0 w-1 h-1 opacity-0 pointer-events-none z-[-9999]"
+        />
+      )}
 
       <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-violet-500 origin-left z-[2000]"
