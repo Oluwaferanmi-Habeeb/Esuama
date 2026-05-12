@@ -13,13 +13,7 @@ const milestones = [
     description: "The stars aligned perfectly that night, and since then, I've known you were my true north.",
     icon: Heart,
     color: "bg-pink-500/20 text-pink-400",
-  },
-  {
-    title: "The Best is Yet to Come",
-    description: "I can't wait to see what else we build together in this new decade.",
-    icon: Calendar,
-    color: "bg-emerald-500/20 text-emerald-400",
-  },
+  }
 ];
 
 export default function MemoryTimeline() {

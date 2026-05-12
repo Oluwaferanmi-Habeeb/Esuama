@@ -70,16 +70,15 @@ export default function App() {
 
   return (
     <main className="relative min-h-screen bg-cosmic-bg selection:bg-violet-500/30 selection:text-white">
-      {/* Background Audio - Will play automatically after user interaction (clicking the enter button) */}
+      {/* Background Audio - Triggers on user interaction */}
       {started && (
         <iframe 
           width="0" 
           height="0" 
-          src="https://www.youtube.com/embed/gs9Ard7ql6s?autoplay=1&loop=1&playlist=gs9Ard7ql6s" 
+          src="https://www.youtube.com/embed/gs9Ard7ql6s?autoplay=1&loop=1&playlist=gs9Ard7ql6s&controls=0&mute=0" 
           title="Asake My Heart" 
-          frameBorder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          className="fixed top-0 left-0 w-1 h-1 opacity-0 pointer-events-none z-[-9999]"
+          allow="autoplay" 
+          className="fixed top-0 left-0 w-0 h-0 opacity-0 pointer-events-none"
         />
       )}
 
@@ -170,7 +169,6 @@ export default function App() {
               <VideoMemorial />
               <TwentyReasons />
               <MemoryTimeline />
-              <CosmicForecast />
             </div>
 
             {/* Closing */}
